@@ -15,29 +15,6 @@
 #include "header.h"
 #include <vector>
 
-// =================================================================
-// Performs the selection sort algorithm on an array.
-//
-// @param A, an array of T elements.
-// @param size, the number of elements in the array.
-// =================================================================
-template <class T>
-void selectionSort(T *arr, int size) {
-	int pos;
-
-	for(int i = size - 1; i > 0; i--){
-		pos = 0;
-		for(int j = 1; j <= i; j++){
-			if(arr[j] > arr[pos]){
-				pos = j;
-			}
-		}
-
-		if (pos != i){
-			swap(arr, i, pos);
-		}
-	}
-}
 
 // =================================================================
 // Performs the selection sort algorithm on a vector.
@@ -46,7 +23,8 @@ void selectionSort(T *arr, int size) {
 // =================================================================
 template <class T>
 void selectionSort(std::vector<T> &v) {
-	int pos;
+	int pos; 
+	int sel;
 
 	for(int i = v.size() - 1; i > 0; i--){
 		pos = 0;
@@ -58,8 +36,9 @@ void selectionSort(std::vector<T> &v) {
 
 		if (pos != i){
 			swap(v, i, pos);
+			sel++;
 		}
-	}
+	} return sel; 
 }
 
 #endif /* SELECTION_H */

@@ -15,20 +15,6 @@
 #include "header.h"
 #include <vector>
 
-// =================================================================
-// Performs the insertion sort algorith on an array.
-//
-// @param A, an array of T elements.
-// @param size, the number of elements in the array.
-// =================================================================
-template <class T>
-void insertionSort(T *arr, int size) {
-	for(int i = 1; i < size; i++){
-		for(int j = i; j > 0 && arr[j] < arr[j - 1]; j--){
-			swap(arr, j, j - 1);
-		}
-	}
-}
 
 // =================================================================
 // Performs the insertion sort algorith on a vector.
@@ -36,12 +22,15 @@ void insertionSort(T *arr, int size) {
 // @param A, a vector of T elements.
 // =================================================================
 template <class T>
-void insertionSort(std::vector<T> &v) {
+int insertionSort(std::vector<T> &v) {
+	int insertion = 0;
 	for(int i = 1; i < v.size(); i++){
 		for(int j = i; j > 0 && v[j] < v[j - 1]; j--){
 			swap(v, j, j - 1);
+			insertion++;
 		}
 	}
+	return insertion;
 }
 
 #endif /* INSERTION_H */

@@ -24,13 +24,20 @@
 //		   is not found in the vector.
 // =================================================================
 template <class T>
-int sequentialSearch(const std::vector<T> &v, T key) {
+int *sequentialSearch(const std::vector<T> &v, T key) {
+	
+	static int seq[2];
+	
+	int sequence = 0;
+	seq[0] = -1;
+	
 	for (int i = 0; i < v.size(); i++) {
 		if (v[i] == key) {
-			return i;
+			seq[0] = i;
 		}
 	}
-	return -1;
+	seq[1] = sequence;
+	return seq;
 }
 
 // =================================================================
@@ -42,22 +49,29 @@ int sequentialSearch(const std::vector<T> &v, T key) {
 //		   is not found in the vector.
 // =================================================================
 template <class T>
-int binarySearch(const std::vector<T> &v, T key) {
+int *binarySearch(const std::vector<T> &v, T key) {
 	int low, high, mid;
 
+
+	static int bin [2];
+	int binco = 0;
 	low = 0;
+	bin [0] = -1;
 	high = v.size() - 1;
 	while (low <= high) {
 		mid = low + ((high - low) / 2); // mid = (high + low) / 2;
+		binco++;
 		if (key == v[mid]) {
-			return mid;
+			bin[0] =  mid;
 		} else if (key < v[mid]) {
 			high = mid - 1;
 		} else {
 			low = mid + 1;
 		}
 	}
-	return -1;
+	bin[1] = binco;
+
+return bin;
 }
 
 // =================================================================
@@ -70,7 +84,7 @@ int binarySearch(const std::vector<T> &v, T key) {
 // @return the index of the searched element, -1 in case the element
 //		   is not found in the vector.
 // =================================================================
-template <class T>
+/*template <class T>
 int binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
 	int mid;
 
@@ -86,6 +100,6 @@ int binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
 			return binaryRSearch(v, mid + 1, high, key);
 		}
 	}
-}
+}*/
 
 #endif /* SEARCH_H */
