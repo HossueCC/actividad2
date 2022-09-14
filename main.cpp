@@ -9,7 +9,6 @@
 #include <sstream>
 #include <algorithm>
 #include <fstream>
-#include <vector>
 #include "header.h"
 #include "search.h"
 #include "bubble.h"
@@ -32,11 +31,11 @@ int main(int argc, char* argv[]) {
 	outputFile.open(argv[2]);
 	
 	inputFile >> n;
-	vector <int> v(n); //Creación del vector con los n numeros
+	vector <int> v(n); //Creación del vector con n espacios vacios 
 
 
 
-	for (int i = 0; i < n; i++){ //Recorremos el vector
+	for (int i = 0; i < n; i++){ //Recorremos el vector con iterador
 		inputFile >> n1;
 		v[i] = n1;
 	}
@@ -45,17 +44,17 @@ int main(int argc, char* argv[]) {
 	
 	vectorCopia = v; //Mandamos nuestro vector copia ordenado a nuestro vector original
 
-	outputFile << selectionSort(vectorCopia) << " "; //Aplicamos el algoritmo selection en el vector copia  
+	outputFile<<selectionSort(vectorCopia) << " "; //Aplicamos el algoritmo selection en el vector copia  
 
 	vectorCopia = v; //Mandamos el vector ordenado a la variable original
 
 	outputFile << insertionSort(vectorCopia) << "\n\n"; //Aplicamos el algoritmo insertion en el vector copia
 
-	inputFile >> q; 
+	inputFile >> q; //Tamaño del vector
 
 
 	for (int i = 0; i < q; i++){
-		inputFile >> qr;
+		inputFile >> qr; //Valor a buscar
 		a = sequentialSearch(vectorCopia,qr);
 		b = binarySearch(vectorCopia,qr);
 		outputFile << a[0] << " " << a[1] << " " << b[1] << endl;

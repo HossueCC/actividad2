@@ -16,15 +16,16 @@
 #include <vector>
 
 
+
 // =================================================================
 // Performs the selection sort algorithm on a vector.
 //
 // @param A, a vector of T elements.
 // =================================================================
 template <class T>
-void selectionSort(std::vector<T> &v) {
-	int pos; 
-	int sel;
+int selectionSort(std::vector<T> &v) {
+	int pos = 0;
+	int sel = 0;
 
 	for(int i = v.size() - 1; i > 0; i--){
 		pos = 0;
@@ -33,12 +34,13 @@ void selectionSort(std::vector<T> &v) {
 				pos = j;
 			}
 		}
-
 		if (pos != i){
 			swap(v, i, pos);
 			sel++;
 		}
-	} return sel; 
+	}
+	return sel;
+	
 }
 
 #endif /* SELECTION_H */

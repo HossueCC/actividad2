@@ -32,8 +32,10 @@ int *sequentialSearch(const std::vector<T> &v, T key) {
 	seq[0] = -1;
 	
 	for (int i = 0; i < v.size(); i++) {
+		sequence++;
 		if (v[i] == key) {
 			seq[0] = i;
+			break;
 		}
 	}
 	seq[1] = sequence;
@@ -63,6 +65,7 @@ int *binarySearch(const std::vector<T> &v, T key) {
 		binco++;
 		if (key == v[mid]) {
 			bin[0] =  mid;
+			break;
 		} else if (key < v[mid]) {
 			high = mid - 1;
 		} else {
@@ -84,7 +87,7 @@ return bin;
 // @return the index of the searched element, -1 in case the element
 //		   is not found in the vector.
 // =================================================================
-/*template <class T>
+template <class T>
 int binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
 	int mid;
 
@@ -100,6 +103,6 @@ int binaryRSearch(const std::vector<T> &v, int low, int high, T key) {
 			return binaryRSearch(v, mid + 1, high, key);
 		}
 	}
-}*/
+}
 
 #endif /* SEARCH_H */
